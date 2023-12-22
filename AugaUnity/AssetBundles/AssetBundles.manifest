@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 2004991995
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: augaassets
+      Dependencies: {}
