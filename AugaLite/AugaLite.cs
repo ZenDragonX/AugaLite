@@ -444,15 +444,14 @@ namespace AugaLite
             }
         }
 
+
         [UsedImplicitly]
         public void Update()
         {
-            /*
-             * DISABLED UPDATES HERE BECAUSE IT WAS KILLING PERFORMANCE AND REDUNDANT
-             * AND REDUNDANT SINCE THE SETUP 
-             * - Z
-             */
-//            UpdateStatBars();
+            // DISABLED UPDATES HERE BECAUSE IT WAS KILLING PERFORMANCE AND REDUNDANT
+            // AND REDUNDANT SINCE THE SETUP
+            // - Z
+            //UpdateStatBars();
         }
 
         public static void UpdateStatBars()

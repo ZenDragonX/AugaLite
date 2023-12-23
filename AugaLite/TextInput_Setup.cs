@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿/*
+using HarmonyLib;
 
 namespace AugaLite
 {
@@ -15,3 +16,4 @@ namespace AugaLite
         }
     }
 }
+*/

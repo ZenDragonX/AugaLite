@@ -1,4 +1,7 @@
-﻿/*
+﻿
+// Disabled because flickering in latest version of Valheim. -Z
+
+/*
 using HarmonyLib;
 
 namespace AugaLite

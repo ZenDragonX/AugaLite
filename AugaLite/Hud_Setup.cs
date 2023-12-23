@@ -21,9 +21,10 @@ namespace AugaLite
         [HarmonyPostfix]
         public static void Hud_Awake_Postfix(Hud __instance)
         {
-            Transform hotkeyBar;
-            hotkeyBar = __instance.Replace("hudroot/HotKeyBar", AugaLite.Assets.Hud, "hudroot/HotKeyBar");
+            /*
+            var hotkeyBar = __instance.Replace("hudroot/HotKeyBar", AugaLite.Assets.Hud, "hudroot/HotKeyBar");
             hotkeyBar.gameObject.AddComponent<MovableHudElement>().Init(TextAnchor.UpperLeft, 55, -44);
+            */
             
             /*
             var newStatusEffects = __instance.Replace("hudroot/StatusEffects", Auga.Assets.Hud);
