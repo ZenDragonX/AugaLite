@@ -86,7 +86,7 @@ namespace AugaLite
     //[BepInDependency("org.bepinex.plugins.jewelcrafting", BepInDependency.DependencyFlags.SoftDependency)]
     public class AugaLite : BaseUnityPlugin
     {
-        public const string PluginID = "zendragonx.auga-lite";
+        public const string PluginID = "ZenDragon.AugaLite";
         public const string Version = "1.3.11";
 
         public enum StatBarTextDisplayMode { JustValue, ValueAndMax, ValueMaxPercent, JustPercent }
@@ -315,21 +315,21 @@ namespace AugaLite
             HealthBarFixedSize = Config.Bind("StatBars", "HealthBarFixedSize", 0, "If greater than 0, forces the health bar to be that many pixels long, regardless of the player's max health.");
             HealthBarTextDisplay = Config.Bind("StatBars", "HealthBarTextDisplay", StatBarTextDisplayMode.JustValue, "Changes how the label of the health bar is displayed.");
             HealthBarTextPosition = Config.Bind("StatBars", "HealthBarTextPosition", StatBarTextPosition.Center, "Changes where the label of the health bar is displayed.");
-            HealthBarShowTicks = Config.Bind("StatBars", "HealthBarShowTicks", true, "Show a faint line on the bar every 25 units");
+            HealthBarShowTicks = Config.Bind("StatBars", "HealthBarShowTicks", false, "Show a faint line on the bar every 25 units");
 
             StaminaBarShow = Config.Bind("StatBars", "StaminaBarShow", true, "If false, hides the stamina bar completely.");
             StaminaBarFixedSize = Config.Bind("StatBars", "StaminaBarFixedSize", 0, "If greater than 0, forces the stamina bar to be that many pixels long, regardless of the player's max stamina.");
             StaminaBarTextDisplay = Config.Bind("StatBars", "StaminaBarTextDisplay", StatBarTextDisplayMode.JustValue, "Changes how the label of the stamina bar is displayed.");
             StaminaBarTextPosition = Config.Bind("StatBars", "StaminaBarTextPosition", StatBarTextPosition.Center, "Changes where the label of the stamina bar is displayed.");
-            StaminaBarShowTicks = Config.Bind("StatBars", "StaminaBarShowTicks", true, "Show a faint line on the bar every 25 units");
+            StaminaBarShowTicks = Config.Bind("StatBars", "StaminaBarShowTicks", false, "Show a faint line on the bar every 25 units");
 
             EitrBarShow = Config.Bind("StatBars", "EitrBarShow", true, "If false, hides the eitr bar completely.");
             EitrBarFixedSize = Config.Bind("StatBars", "EitrBarFixedSize", 0, "If greater than 0, forces the eitr bar to be that many pixels long, regardless of the player's max eitr. Eitr bar still hides if max eitr is zero.");
             EitrBarTextDisplay = Config.Bind("StatBars", "EitrBarTextDisplay", StatBarTextDisplayMode.JustValue, "Changes how the label of the eitr bar is displayed.");
             EitrBarTextPosition = Config.Bind("StatBars", "EitrBarTextPosition", StatBarTextPosition.Center, "Changes where the label of the eitr bar is displayed.");
-            EitrBarShowTicks = Config.Bind("StatBars", "Eitr", true, "Show a faint line on the bar every 25 units");
+            EitrBarShowTicks = Config.Bind("StatBars", "EitrBarShowTicks", false, "Show a faint line on the bar every 25 units");
             
-            AugaChatShow = Config.Bind("AugaChat", "Show Auga Chat. Disable to use other mods. (Requires Restart)", true, "If false, disables the Auga Chat window display");
+            AugaChatShow = Config.Bind("AugaChat", "Show Auga Chat. Disable to use other mods. (Requires Restart)", false, "If false, disables the Auga Chat window display");
         }
 
         private static void LoadAssets()

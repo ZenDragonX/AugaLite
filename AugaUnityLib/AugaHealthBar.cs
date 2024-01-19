@@ -30,7 +30,7 @@ namespace AugaUnity
         public bool Hide = false;
         public float FixedLength = 0;
         public TextDisplayMode TextDisplay = TextDisplayMode.JustValue;
-        public bool ShowTicks = false;
+        public bool ShowTicks = true;
         [Header("Above, Below, Center, Start, End")]
         public Text[] CurrentValueText = { null, null, null, null, null };
 
@@ -141,7 +141,6 @@ namespace AugaUnity
 
             if (!Application.isEditor)
             {
-                // NOTE: changed ShowTicks to false at the top of the file -Z
                 SetupTicks();
             }
         }
