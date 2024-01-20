@@ -81,10 +81,10 @@ namespace AugaLite
                 {
                     if (hud.Key != null && hud.Value != null && hud.Value.m_gui != null)
                     {
-                        var name = hud.Value.m_gui.transform.Find("Name");
-                        if (name != null)
+                        var nameAnchor = hud.Value.m_gui.transform.Find("Name");
+                        if (nameAnchor != null)
                         {
-                            var rt = (RectTransform)name;
+                            var rt = (RectTransform)nameAnchor;
                             rt.anchoredPosition = new Vector2(0, 38.5f);
                         }
                     }

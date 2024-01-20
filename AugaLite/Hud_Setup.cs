@@ -59,8 +59,8 @@ namespace AugaLite
             __instance.m_eventBar.gameObject.AddComponent<MovableHudElement>().Init(TextAnchor.UpperCenter, 0, -90);
             
             __instance.m_damageScreen = __instance.Replace("hudroot/Damaged", AugaLite.Assets.Hud).GetComponent<Image>();
-
-
+            
+            /* disabled, just need the hover text font, standard crosshair is fine.
             var newCrosshair = __instance.Replace("hudroot/crosshair", AugaLite.Assets.Hud);
             __instance.m_crosshair = newCrosshair.Find("crosshair").GetComponent<Image>();
             __instance.m_crosshairBow = newCrosshair.Find("crosshair_bow").GetComponent<Image>();
@@ -73,10 +73,13 @@ namespace AugaLite
             __instance.m_stealthBar = newCrosshair.Find("Sneak/StealthBar").GetComponent<GuiBar>();
             __instance.m_pieceHealthBar.gameObject.AddComponent<MovableHudElement>().Init("BuildPieceHealthBar", TextAnchor.MiddleCenter, 130, 0);
             __instance.m_targetedAlert.transform.parent.gameObject.AddComponent<MovableHudElement>().Init("Stealth", TextAnchor.MiddleCenter, 0, 0);
+            */
 
-
-            var originalGuardianPowerMaterial = __instance.m_gpIcon.material;
+            // just the hover text font.  none of the other stuff needed.
+            var augaHoverText = AugaLite.Assets.Hud.transform.Find("hudroot/crosshair/Dummy/HoverName").GetComponent<TextMeshProUGUI>();
+            __instance.m_hoverName.font = augaHoverText.font;
             
+            var originalGuardianPowerMaterial = __instance.m_gpIcon.material;
             __instance.m_gpRoot = (RectTransform)__instance.Replace("hudroot/GuardianPower", AugaLite.Assets.Hud);
             __instance.m_gpName = __instance.m_gpRoot.Find("Name").GetComponent<TMP_Text>();
             __instance.m_gpIcon = __instance.m_gpRoot.Find("Icon").GetComponent<Image>();
@@ -288,6 +291,7 @@ namespace AugaLite
             return false;
         }
 
+        /*
         public static void SetBuildCategory(int index)
         {
             if (Player.m_localPlayer != null)
@@ -295,8 +299,10 @@ namespace AugaLite
                 Player.m_localPlayer.SetBuildCategory(index);
             }
         }
+        */
     }
 
+    /*
     [HarmonyPatch(typeof(HotkeyBar), nameof(HotkeyBar.UpdateIcons))]
     public static class HotkeyBar_UpdateIcons_Patch
     {
@@ -324,6 +330,7 @@ namespace AugaLite
             }
         }
     }
+    */
 
     /*
     // Hud.UpdateShipHud (0.145 either way)
@@ -355,7 +362,8 @@ namespace AugaLite
     }
     */
     
-/*
+
+    /*
     //public void SetupPieceInfo(Piece piece)
     [HarmonyPatch(typeof(Hud), nameof(Hud.SetupPieceInfo))]
     public static class Hud_SetupPieceInfo_Patch
@@ -474,8 +482,10 @@ namespace AugaLite
             requireItemsContainer.gameObject.SetActive(piece != null && piece.m_resources is { Length: > 0 });
         }
     }
-*/
+    */
     
+
+    /*
     [HarmonyPatch(typeof(Hud), nameof(Hud.UpdateCrosshair))]
     public static class Hud_UpdateCrosshair_Patch
     {
@@ -590,6 +600,8 @@ namespace AugaLite
             }
         }
     }
+    */
+
 
     //StaminaBarEmptyFlash
     [HarmonyPatch(typeof(Hud), nameof(Hud.StaminaBarEmptyFlash))]

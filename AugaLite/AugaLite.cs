@@ -20,46 +20,46 @@ namespace AugaLite
 {
     public class AugaAssets
     {
-        public GameObject AugaLogo;
-        public GameObject InventoryScreen;
+//        public GameObject AugaLogo;
+//        public GameObject InventoryScreen;
         public GameObject Hud;
         public Texture2D Cursor;
-        public GameObject MenuPrefab;
-        public GameObject TextViewerPrefab;
-        public GameObject MainMenuPrefab;
-        public GameObject BuildHudElement;
-        public GameObject SettingsPrefab;
+//        public GameObject MenuPrefab;
+//        public GameObject TextViewerPrefab;
+//        public GameObject MainMenuPrefab;
+//        public GameObject BuildHudElement;
+//        public GameObject SettingsPrefab;
         public GameObject MessageHud;
-        public GameObject TextInput;
-        public GameObject AugaBarber;
-        public GameObject AugaChat;
+//        public GameObject TextInput;
+//        public GameObject AugaBarber;
+//        public GameObject AugaChat;
         public GameObject DamageText;
-        public GameObject EnemyHud;
-        public GameObject StoreGui;
-        public GameObject WorldListElement;
-        public GameObject ServerListElement;
-        public GameObject PasswordDialog;
-        public GameObject ConnectingDialog;
-        public GameObject PanelBase;
-        public GameObject ButtonSmall;
-        public GameObject ButtonMedium;
-        public GameObject ButtonFancy;
-        public GameObject ButtonToggle;
-        public GameObject ButtonSettings;
-        public GameObject DiamondButton;
-        public Font SourceSansProBold;
-        public Font SourceSansProSemiBold;
-        public Font SourceSansProRegular;
-        public Sprite ItemBackgroundSprite;
-        public GameObject InventoryTooltip;
-        public GameObject SimpleTooltip;
-        public GameObject DividerSmall;
-        public GameObject DividerMedium;
-        public GameObject DividerLarge;
-        public GameObject ConfirmDialog;
-        public Sprite RecyclingPanelIcon;
-        public GameObject BuildHud;
-        public GameObject LeftWristMountUI;
+//        public GameObject EnemyHud;
+//        public GameObject StoreGui;
+//        public GameObject WorldListElement;
+//        public GameObject ServerListElement;
+//        public GameObject PasswordDialog;
+//        public GameObject ConnectingDialog;
+//        public GameObject PanelBase;
+//        public GameObject ButtonSmall;
+//        public GameObject ButtonMedium;
+//        public GameObject ButtonFancy;
+//        public GameObject ButtonToggle;
+//        public GameObject ButtonSettings;
+//        public GameObject DiamondButton;
+//      public Font SourceSansProBold;
+//      public Font SourceSansProSemiBold;
+//      public Font SourceSansProRegular;
+//        public Sprite ItemBackgroundSprite;
+//    public GameObject InventoryTooltip;
+//    public GameObject SimpleTooltip;
+//        public GameObject DividerSmall;
+//        public GameObject DividerMedium;
+//        public GameObject DividerLarge;
+//        public GameObject ConfirmDialog;
+//        public Sprite RecyclingPanelIcon;
+//        public GameObject BuildHud;
+//        public GameObject LeftWristMountUI;
     }
 
     public class AugaColors
@@ -78,12 +78,12 @@ namespace AugaLite
     }
 
     [BepInPlugin(PluginID, "AugaLite", Version)]
-    //[BepInDependency("Menthus.bepinex.plugins.BetterTrader", BepInDependency.DependencyFlags.SoftDependency)]
-    //[BepInDependency("maximods.valheim.multicraft", BepInDependency.DependencyFlags.SoftDependency)]
-    //[BepInDependency("redseiko.valheim.chatter", BepInDependency.DependencyFlags.SoftDependency)]
-    //[BepInDependency("redseiko.valheim.searscatalog", BepInDependency.DependencyFlags.SoftDependency)]
-    //[BepInDependency("com.github.abearcodes.valheim.simplerecycling", BepInDependency.DependencyFlags.SoftDependency)]
-    //[BepInDependency("org.bepinex.plugins.jewelcrafting", BepInDependency.DependencyFlags.SoftDependency)]
+//[BepInDependency("Menthus.bepinex.plugins.BetterTrader", BepInDependency.DependencyFlags.SoftDependency)]
+//[BepInDependency("maximods.valheim.multicraft", BepInDependency.DependencyFlags.SoftDependency)]
+//[BepInDependency("redseiko.valheim.chatter", BepInDependency.DependencyFlags.SoftDependency)]
+//[BepInDependency("redseiko.valheim.searscatalog", BepInDependency.DependencyFlags.SoftDependency)]
+//[BepInDependency("com.github.abearcodes.valheim.simplerecycling", BepInDependency.DependencyFlags.SoftDependency)]
+//[BepInDependency("org.bepinex.plugins.jewelcrafting", BepInDependency.DependencyFlags.SoftDependency)]
     public class AugaLite : BaseUnityPlugin
     {
         public const string PluginID = "ZenDragon.AugaLite";
@@ -94,7 +94,7 @@ namespace AugaLite
 
         private static ConfigEntry<bool> _loggingEnabled;
         private static ConfigEntry<LogLevel> _logLevel;
-        public static ConfigEntry<bool> UseAugaTrash;
+        //public static ConfigEntry<bool> UseAugaTrash;
 
         public static ConfigEntry<bool> HealthBarShow;
         public static ConfigEntry<int> HealthBarFixedSize;
@@ -114,20 +114,23 @@ namespace AugaLite
         public static ConfigEntry<StatBarTextPosition> EitrBarTextPosition;
         public static ConfigEntry<bool> EitrBarShowTicks;
         
-        public static ConfigEntry<bool> AugaChatShow;
+        //public static ConfigEntry<bool> AugaChatShow;
 
         public static readonly AugaAssets Assets = new AugaAssets();
         public static readonly AugaColors Colors = new AugaColors();
 
+        /*
         public static bool HasBetterTrader;
         public static bool HasMultiCraft;
         public static bool HasSimpleRecycling;
         public static bool HasChatter;
         public static bool HasSearsCatalog;
         public static bool HasJewelcrafting;
-
+        */
+        
         private static AugaLite _instance;
         private Harmony _harmony;
+        
         //private static Type _multiCraftUiType;
         //private static Type _recyclingContainerButtonHolderType;
         //private static Type _recyclingStationButtonHolderType;
@@ -309,7 +312,7 @@ namespace AugaLite
         {
             _loggingEnabled = Config.Bind("Logging", "LoggingEnabled", false, "Enable logging");
             _logLevel = Config.Bind("Logging", "LogLevel", LogLevel.Info, "Only log messages of the selected level or higher");
-            UseAugaTrash = Config.Bind("Options", "UseAugaTrash", false, "Enable Auga's built in trash button. Click on the button while holding an item or part of a stack with the mouse.");
+            //UseAugaTrash = Config.Bind("Options", "UseAugaTrash", false, "Enable Auga's built in trash button. Click on the button while holding an item or part of a stack with the mouse.");
             
             HealthBarShow = Config.Bind("StatBars", "HealthBarShow", true, "If false, hides the health bar completely.");
             HealthBarFixedSize = Config.Bind("StatBars", "HealthBarFixedSize", 0, "If greater than 0, forces the health bar to be that many pixels long, regardless of the player's max health.");
@@ -329,7 +332,7 @@ namespace AugaLite
             EitrBarTextPosition = Config.Bind("StatBars", "EitrBarTextPosition", StatBarTextPosition.Center, "Changes where the label of the eitr bar is displayed.");
             EitrBarShowTicks = Config.Bind("StatBars", "EitrBarShowTicks", false, "Show a faint line on the bar every 25 units");
             
-            AugaChatShow = Config.Bind("AugaChat", "Show Auga Chat. Disable to use other mods. (Requires Restart)", false, "If false, disables the Auga Chat window display");
+            //AugaChatShow = Config.Bind("AugaChat", "Show Auga Chat. Disable to use other mods. (Requires Restart)", false, "If false, disables the Auga Chat window display");
         }
 
         private static void LoadAssets()
@@ -345,11 +348,11 @@ namespace AugaLite
 //            Assets.BuildHudElement = assetBundle.LoadAsset<GameObject>("BuildHudElement");
 //            Assets.SettingsPrefab = assetBundle.LoadAsset<GameObject>("AugaSettings");
             Assets.MessageHud = assetBundle.LoadAsset<GameObject>("AugaMessageHud");
-            Assets.TextInput = assetBundle.LoadAsset<GameObject>("AugaTextInput");
+//            Assets.TextInput = assetBundle.LoadAsset<GameObject>("AugaTextInput");
 //            Assets.AugaBarber = assetBundle.LoadAsset<GameObject>("AugaBarber");
 //            Assets.AugaChat = assetBundle.LoadAsset<GameObject>("AugaChat");
             Assets.DamageText = assetBundle.LoadAsset<GameObject>("AugaDamageText");
-            Assets.EnemyHud = assetBundle.LoadAsset<GameObject>("AugaEnemyHud");
+//            Assets.EnemyHud = assetBundle.LoadAsset<GameObject>("AugaEnemyHud");
 //            Assets.StoreGui = assetBundle.LoadAsset<GameObject>("AugaStoreScreen");
 //            Assets.WorldListElement = assetBundle.LoadAsset<GameObject>("WorldListElement");
 //            Assets.ServerListElement = assetBundle.LoadAsset<GameObject>("ServerListElement");
@@ -362,17 +365,17 @@ namespace AugaLite
 //            Assets.ButtonToggle = assetBundle.LoadAsset<GameObject>("ButtonToggle");
 //            Assets.ButtonSettings = assetBundle.LoadAsset<GameObject>("ButtonSettings");
 //            Assets.DiamondButton = assetBundle.LoadAsset<GameObject>("DiamondButton");
-//            Assets.SourceSansProBold = assetBundle.LoadAsset<Font>("SourceSansPro-Bold");
-//            Assets.SourceSansProSemiBold = assetBundle.LoadAsset<Font>("SourceSansPro-SemiBold");
-//            Assets.SourceSansProRegular = assetBundle.LoadAsset<Font>("SourceSansPro-Regular");
+//          Assets.SourceSansProBold = assetBundle.LoadAsset<Font>("SourceSansPro-Bold");
+//          Assets.SourceSansProSemiBold = assetBundle.LoadAsset<Font>("SourceSansPro-SemiBold");
+//          Assets.SourceSansProRegular = assetBundle.LoadAsset<Font>("SourceSansPro-Regular");
 //            Assets.ItemBackgroundSprite = assetBundle.LoadAsset<Sprite>("Container_Square_A");
-//            Assets.InventoryTooltip = assetBundle.LoadAsset<GameObject>("InventoryTooltip");
-            Assets.SimpleTooltip = assetBundle.LoadAsset<GameObject>("SimpleTooltip");
+//        Assets.InventoryTooltip = assetBundle.LoadAsset<GameObject>("InventoryTooltip");
+//        Assets.SimpleTooltip = assetBundle.LoadAsset<GameObject>("SimpleTooltip");
 //            Assets.DividerSmall = assetBundle.LoadAsset<GameObject>("DividerSmall");
 //            Assets.DividerMedium = assetBundle.LoadAsset<GameObject>("DividerMedium");
 //            Assets.DividerLarge = assetBundle.LoadAsset<GameObject>("DividerLarge");
 //            Assets.ConfirmDialog = assetBundle.LoadAsset<GameObject>("ConfirmDialog");
-            //Assets.RecyclingPanelIcon = assetBundle.LoadAsset<Sprite>("RecyclingPanel");
+//        Assets.RecyclingPanelIcon = assetBundle.LoadAsset<Sprite>("RecyclingPanel");
 //            Assets.LeftWristMountUI = assetBundle.LoadAsset<GameObject>("LeftWristMountUI");
 //            Assets.BuildHud = assetBundle.LoadAsset<GameObject>("BuildHud");
         }
@@ -445,6 +448,7 @@ namespace AugaLite
         }
 
 
+        /*
         [UsedImplicitly]
         public void Update()
         {
@@ -453,7 +457,8 @@ namespace AugaLite
             // - Z
             //UpdateStatBars();
         }
-
+        */
+        
         public static void UpdateStatBars()
         {
             if (Hud.instance != null)
@@ -491,8 +496,8 @@ namespace AugaLite
             }
         }
     }
-
     
+    /*
     [HarmonyPatch(typeof(Terminal), nameof(Terminal.InitTerminal))]
     public static class Terminal_InitTerminal_Patch
     {
@@ -506,6 +511,5 @@ namespace AugaLite
             });
         }
     }
+    */
 }
-
-
