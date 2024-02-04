@@ -287,6 +287,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FejdStartup_Patch.cs" />
     <Compile Include="MainMenu_Setup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
