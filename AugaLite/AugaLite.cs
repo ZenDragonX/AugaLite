@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Threading;
-using AugaLite.Compat;
 using AugaUnity;
 using BepInEx;
-using BepInEx.Bootstrap;
 using BepInEx.Configuration;
 using BepInEx.Logging;
 using fastJSON;
 using HarmonyLib;
-using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.PostProcessing;
+using UnityEngine.SceneManagement;
 
 namespace AugaLite
 {
@@ -167,6 +163,8 @@ namespace AugaLite
                 }
             }
 
+            SceneManager.sceneLoaded += OnSceneLoaded;
+            
             LoadDependencies();
             //APIManager.Patcher.Patch();
             LoadTranslations();
@@ -186,7 +184,21 @@ namespace AugaLite
 
         }
 
-        
+
+        private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            
+            // disable lens dirt
+            var camera = GameCamera.instance;
+            if (!camera)
+                return;
+
+            var post = camera.gameObject.GetComponent<PostProcessingBehaviour>();
+            if (!post)
+                return;
+
+            post.profile.bloom.m_Settings.lensDirt.intensity = 0;
+        }
         
 /*
         public static bool MultiCraft_UI_CreateSpaceFromCraftButton_Patch(InventoryGui instance)
