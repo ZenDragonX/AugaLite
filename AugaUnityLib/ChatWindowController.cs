@@ -20,8 +20,8 @@ namespace AugaUnity
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1) ||
-                Input.GetKeyDown(KeyCode.Escape) || ZInput.GetButtonDown("JoyButtonB") ||
+            if (ZInput.GetKeyDown(KeyCode.Mouse0) || ZInput.GetKey(KeyCode.Mouse1) ||
+                ZInput.GetKeyDown(KeyCode.Escape) || ZInput.GetButtonDown("JoyButtonB") ||
                 ZInput.GetButtonDown("JoyLStickLeft") || ZInput.GetButtonDown("JoyLStickRight") ||
                 ZInput.GetButtonDown("JoyLStickUp") || ZInput.GetButtonDown("JoyLStickDown"))
             {

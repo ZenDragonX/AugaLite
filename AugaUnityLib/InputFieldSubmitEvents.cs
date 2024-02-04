@@ -20,7 +20,7 @@ namespace AugaUnity
 
         private void Update()
         {
-            if (m_field.text == "" || !Input.GetKeyDown(KeyCode.Return) && !Input.GetKeyDown(KeyCode.KeypadEnter) && !ZInput.GetButtonDown("JoyButtonA"))
+            if (m_field.text == "" || !ZInput.GetKeyDown(KeyCode.Return) && !ZInput.GetKeyDown(KeyCode.KeypadEnter) && !ZInput.GetButtonDown("JoyButtonA"))
                 return;
             
             foreach (var submitAction in _submitActions)

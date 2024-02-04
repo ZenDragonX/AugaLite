@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace AugaUnity
@@ -33,11 +34,12 @@ namespace AugaUnity
                 return;
             }
 
-            var keycode = ZInput.instance.m_buttons[keyName].m_key;
+            var key = ZInput.instance.m_buttons[keyName].m_key; 
             var localizedKeyString = Localization.instance.GetBoundKeyString(keyName);
-
+            
             var showMouse = -1;
-            switch (keycode)
+            /* JKA - disabled because keycode vs key is bonkers and not going to use this anyhow.
+            switch (key)
             {
                 case KeyCode.Mouse0: showMouse = 0; break;
                 case KeyCode.Mouse1: showMouse = 1; break;
@@ -47,7 +49,8 @@ namespace AugaUnity
                 case KeyCode.Mouse5: showMouse = 5; break;
                 case KeyCode.Mouse6: showMouse = 6; break;
             }
-
+            */
+            
             switch (localizedKeyString)
             {
                 case "Equals": localizedKeyString = "="; break;
@@ -63,24 +66,24 @@ namespace AugaUnity
                 localizedKeyString = localizedKeyString.Replace("Alpha", "");
             }
 
-            switch (keycode)
+            switch (key)
             {
-                case KeyCode.KeypadDivide: localizedKeyString = localizedKeyString.Replace("Divide", "/"); break;
-                case KeyCode.KeypadMinus: localizedKeyString = localizedKeyString.Replace("Minus", "-"); break;
-                case KeyCode.KeypadMultiply: localizedKeyString = localizedKeyString.Replace("Multiply", "*"); break;
-                case KeyCode.KeypadEquals: localizedKeyString = localizedKeyString.Replace("Equals", "="); break;
-                case KeyCode.KeypadPeriod: localizedKeyString = localizedKeyString.Replace("Period", "."); break;
-                case KeyCode.KeypadPlus: localizedKeyString = localizedKeyString.Replace("Plus", "+"); break;
+                case Key.NumpadDivide: localizedKeyString = localizedKeyString.Replace("Divide", "/"); break;
+                case Key.NumpadMinus: localizedKeyString = localizedKeyString.Replace("Minus", "-"); break;
+                case Key.NumpadMultiply: localizedKeyString = localizedKeyString.Replace("Multiply", "*"); break;
+                case Key.NumpadEquals: localizedKeyString = localizedKeyString.Replace("Equals", "="); break;
+                case Key.NumpadPeriod: localizedKeyString = localizedKeyString.Replace("Period", "."); break;
+                case Key.NumpadPlus: localizedKeyString = localizedKeyString.Replace("Plus", "+"); break;
 
-                case KeyCode.LeftArrow: localizedKeyString = "←"; break;
-                case KeyCode.RightArrow: localizedKeyString = "→"; break;
-                case KeyCode.UpArrow: localizedKeyString = "↑"; break;
-                case KeyCode.DownArrow: localizedKeyString = "↓"; break;
+                case Key.LeftArrow: localizedKeyString = "←"; break;
+                case Key.RightArrow: localizedKeyString = "→"; break;
+                case Key.UpArrow: localizedKeyString = "↑"; break;
+                case Key.DownArrow: localizedKeyString = "↓"; break;
             }
 
-            if (char.IsPunctuation((char)keycode))
+            if (char.IsPunctuation((char)key))
             {
-                localizedKeyString = ((char)keycode).ToString();
+                localizedKeyString = ((char)key).ToString();
             }
 
             SetText(localizedKeyString, showMouse);
