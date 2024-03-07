@@ -86,6 +86,9 @@ namespace AugaLite
             __instance.m_gpIcon.material = originalGuardianPowerMaterial;
             __instance.m_gpCooldown = __instance.m_gpRoot.Find("GPTimeText").GetComponent<TMP_Text>();
             
+            // hide the hotkey UI display - useless waste of display info that's redundantly redundant.
+            __instance.m_gpRoot.Find("GPKey").HideElement();
+            
             __instance.m_gpRoot.gameObject.AddComponent<MovableHudElement>().Init(TextAnchor.LowerLeft, 60, 70);
 
             
