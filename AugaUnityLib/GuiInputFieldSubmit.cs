@@ -14,7 +14,7 @@ namespace AugaUnity
         private void Update()
         {
             m_field.ActivateInputField();
-            if (!(m_field.text != "") || !ZInput.GetKeyDown(KeyCode.Return) && !ZInput.GetKeyDown(KeyCode.KeypadEnter) && !ZInput.GetButtonDown("JoyButtonA"))
+            if (m_field.text == "" || !ZInput.GetKeyDown(KeyCode.Return) && !ZInput.GetKeyDown(KeyCode.KeypadEnter) && !ZInput.GetButtonDown("JoyButtonA"))
                 return;
             
             m_onSubmit(m_field.text);
