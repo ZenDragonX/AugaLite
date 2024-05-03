@@ -62,8 +62,9 @@ namespace AugaUnity
                 _portal.transform.SetParent(_stage.transform);
                 _portal.transform.localPosition = Vector3.zero;
                 Instantiate(prefab.transform.Find("_target_found_red").gameObject, _portal.transform, false);
-                Instantiate(prefab.transform.Find("New").gameObject, _portal.transform, false);
-
+                var portal = Instantiate(prefab.transform.Find("New").gameObject, _portal.transform, false);
+                portal.SetActive(false); // disable the graphic of the portal, it does not match with Ashlands stone portals
+                
                 _effectFade = _portal.GetComponentInChildren<EffectFade>(true);
                 _meshRenderer = _portal.GetComponentInChildren<MeshRenderer>(true);
 
