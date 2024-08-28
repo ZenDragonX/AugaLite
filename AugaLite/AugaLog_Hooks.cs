@@ -5,18 +5,20 @@ using UnityEngine;
 
 namespace AugaLite
 {
+    /*
     [HarmonyPatch(typeof(Game), nameof(Game.SpawnPlayer))]
     public static class AugaLog_Hooks
     {
         public static void Postfix(Game __instance)
         {
-            if (Player.m_localPlayer.m_firstSpawn)
+            if (Player.m_localPlayer.m_firstSpawn) // m_firstSpawn member no longer exists in latest version of valheim 
             {
                 AugaMessageLog.instance.AddArrivalLog(Player.m_localPlayer);
             }
         }
     }
-
+    */
+    
     [HarmonyPatch(typeof(Player), nameof(Player.OnDeath))]
     public static class Player_OnDeath_Patch
     {
