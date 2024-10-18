@@ -1,0 +1,940 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MonoMod.Backports</name>
+    </assembly>
+    <members>
+        <member name="T:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute">
+             <summary>
+             Indicates that certain members on a specified <see cref="T:System.Type"/> are accessed dynamically,
+             for example through <see cref="N:System.Reflection"/>.
+             </summary>
+             <remarks>
+             This allows tools to understand which members are being accessed during the execution
+             of a program.
+            
+             This attribute is valid on members whose type is <see cref="T:System.Type"/> or <see cref="T:System.String"/>.
+            
+             When this attribute is applied to a location of type <see cref="T:System.String"/>, the assumption is
+             that the string represents a fully qualified type name.
+            
+             When this attribute is applied to a class, interface, or struct, the members specified
+             can be accessed dynamically on <see cref="T:System.Type"/> instances returned from calling
+             <see cref="M:System.Object.GetType"/> on instances of that class, interface, or struct.
+            
+             If the attribute is applied to a method it's treated as a special case and it implies
+             the attribute should be applied to the "this" parameter of the method. As such the attribute
+             should only be used on instance methods of types assignable to System.Type (or string, but no methods
+             will use it there).
+             </remarks>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute.#ctor(System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute"/> class
+            with the specified member types.
+            </summary>
+            <param name="memberTypes">The types of members dynamically accessed.</param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute.MemberTypes">
+            <summary>
+            Gets the <see cref="T:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes"/> which specifies the type
+            of members dynamically accessed.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes">
+             <summary>
+             Specifies the types of members that are dynamically accessed.
+            
+             This enumeration has a <see cref="T:System.FlagsAttribute"/> attribute that allows a
+             bitwise combination of its member values.
+             </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.None">
+            <summary>
+            Specifies no members.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicParameterlessConstructor">
+            <summary>
+            Specifies the default, parameterless public constructor.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicConstructors">
+            <summary>
+            Specifies all public constructors.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicConstructors">
+            <summary>
+            Specifies all non-public constructors.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicMethods">
+            <summary>
+            Specifies all public methods.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicMethods">
+            <summary>
+            Specifies all non-public methods.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicFields">
+            <summary>
+            Specifies all public fields.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicFields">
+            <summary>
+            Specifies all non-public fields.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicNestedTypes">
+            <summary>
+            Specifies all public nested types.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicNestedTypes">
+            <summary>
+            Specifies all non-public nested types.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicProperties">
+            <summary>
+            Specifies all public properties.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicProperties">
+            <summary>
+            Specifies all non-public properties.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicEvents">
+            <summary>
+            Specifies all public events.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicEvents">
+            <summary>
+            Specifies all non-public events.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.All">
+            <summary>
+            Specifies all members.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.UnscopedRefAttribute">
+            <summary>
+            Used to indicate a byref escapes and is not scoped.
+            </summary>
+            <remarks>
+            <para>
+            There are several cases where the C# compiler treats a <see langword="ref"/> as implicitly
+            <see langword="scoped"/> - where the compiler does not allow the <see langword="ref"/> to escape the method.
+            </para>
+            <para>
+            For example:
+            <list type="number">
+                <item><see langword="this"/> for <see langword="struct"/> instance methods.</item>
+                <item><see langword="ref"/> parameters that refer to <see langword="ref"/> <see langword="struct"/> types.</item>
+                <item><see langword="out"/> parameters.</item>
+            </list>
+            </para>
+            <para>
+            This attribute is used in those instances where the <see langword="ref"/> should be allowed to escape.
+            </para>
+            <para>
+            Applying this attribute, in any form, has impact on consumers of the applicable API. It is necessary for
+            API authors to understand the lifetime implications of applying this attribute and how it may impact their users.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.UnscopedRefAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.UnscopedRefAttribute"/> class.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.IsExternalInit">
+            <summary>
+                Reserved to be used by the compiler for tracking metadata.
+                This class should not be used by developers in source code.
+            </summary>
+            <remarks>
+                This definition is provided by the <i>IsExternalInit</i> NuGet package (https://www.nuget.org/packages/IsExternalInit).
+                Please see https://github.com/manuelroemer/IsExternalInit for more information.
+            </remarks>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler">
+            <summary>Provides a handler used by the language compiler to process interpolated strings into <see cref="T:System.String"/> instances.</summary>
+        </member>
+        <member name="F:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.GuessedLengthPerHole">
+            <summary>Expected average length of formatted data used for an individual interpolation expression result.</summary>
+            <remarks>
+            This is inherited from string.Format, and could be changed based on further data.
+            string.Format actually uses `format.Length + args.Length * 8`, but format.Length
+            includes the format items themselves, e.g. "{0}", and since it's rare to have double-digit
+            numbers of items, we bump the 8 up to 11 to account for the three extra characters in "{d}",
+            since the compiler-provided base length won't include the equivalent character count.
+            </remarks>
+        </member>
+        <member name="F:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.MinimumArrayPoolLength">
+            <summary>Minimum size array to rent from the pool.</summary>
+            <remarks>Same as stack-allocation size used today by string.Format.</remarks>
+        </member>
+        <member name="F:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler._provider">
+            <summary>Optional provider to pass to IFormattable.ToString or ISpanFormattable.TryFormat calls.</summary>
+        </member>
+        <member name="F:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler._arrayToReturnToPool">
+            <summary>Array rented from the array pool and used to back <see cref="F:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler._chars"/>.</summary>
+        </member>
+        <member name="F:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler._chars">
+            <summary>The span to write into.</summary>
+        </member>
+        <member name="F:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler._pos">
+            <summary>Position at which to write the next character.</summary>
+        </member>
+        <member name="F:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler._hasCustomFormatter">
+            <summary>Whether <see cref="F:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler._provider"/> provides an ICustomFormatter.</summary>
+            <remarks>
+            Custom formatters are very rare.  We want to support them, but it's ok if we make them more expensive
+            in order to make them as pay-for-play as possible.  So, we avoid adding another reference type field
+            to reduce the size of the handler and to reduce required zero'ing, by only storing whether the provider
+            provides a formatter, rather than actually storing the formatter.  This in turn means, if there is a
+            formatter, we pay for the extra interface call on each AppendFormatted that needs it.
+            </remarks>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.#ctor(System.Int32,System.Int32)">
+            <summary>Creates a handler used to translate an interpolated string into a <see cref="T:System.String"/>.</summary>
+            <param name="literalLength">The number of constant characters outside of interpolation expressions in the interpolated string.</param>
+            <param name="formattedCount">The number of interpolation expressions in the interpolated string.</param>
+            <remarks>This is intended to be called only by compiler-generated code. Arguments are not validated as they'd otherwise be for members intended to be used directly.</remarks>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.#ctor(System.Int32,System.Int32,System.IFormatProvider)">
+            <summary>Creates a handler used to translate an interpolated string into a <see cref="T:System.String"/>.</summary>
+            <param name="literalLength">The number of constant characters outside of interpolation expressions in the interpolated string.</param>
+            <param name="formattedCount">The number of interpolation expressions in the interpolated string.</param>
+            <param name="provider">An object that supplies culture-specific formatting information.</param>
+            <remarks>This is intended to be called only by compiler-generated code. Arguments are not validated as they'd otherwise be for members intended to be used directly.</remarks>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.#ctor(System.Int32,System.Int32,System.IFormatProvider,System.Span{System.Char})">
+            <summary>Creates a handler used to translate an interpolated string into a <see cref="T:System.String"/>.</summary>
+            <param name="literalLength">The number of constant characters outside of interpolation expressions in the interpolated string.</param>
+            <param name="formattedCount">The number of interpolation expressions in the interpolated string.</param>
+            <param name="provider">An object that supplies culture-specific formatting information.</param>
+            <param name="initialBuffer">A buffer temporarily transferred to the handler for use as part of its formatting.  Contents may be overwritten.</param>
+            <remarks>This is intended to be called only by compiler-generated code. Arguments are not validated as they'd otherwise be for members intended to be used directly.</remarks>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.GetDefaultLength(System.Int32,System.Int32)">
+            <summary>Derives a default length with which to seed the handler.</summary>
+            <param name="literalLength">The number of constant characters outside of interpolation expressions in the interpolated string.</param>
+            <param name="formattedCount">The number of interpolation expressions in the interpolated string.</param>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.ToString">
+            <summary>Gets the built <see cref="T:System.String"/>.</summary>
+            <returns>The built string.</returns>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.ToStringAndClear">
+            <summary>Gets the built <see cref="T:System.String"/> and clears the handler.</summary>
+            <returns>The built string.</returns>
+            <remarks>
+            This releases any resources used by the handler. The method should be invoked only
+            once and as the last thing performed on the handler. Subsequent use is erroneous, ill-defined,
+            and may destabilize the process, as may using any other copies of the handler after ToStringAndClear
+            is called on any one of them.
+            </remarks>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.Clear">
+            <summary>Clears the handler, returning any rented array to the pool.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.Text">
+            <summary>Gets a span of the written characters thus far.</summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.AppendLiteral(System.String)">
+            <summary>Writes the specified string to the handler.</summary>
+            <param name="value">The string to write.</param>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.AppendStringDirect(System.String)">
+            <summary>Writes the specified string to the handler.</summary>
+            <param name="value">The string to write.</param>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.AppendFormatted``1(``0)">
+            <summary>Writes the specified value to the handler.</summary>
+            <param name="value">The value to write.</param>
+            <typeparam name="T">The type of the value to write.</typeparam>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.AppendFormatted``1(``0,System.String)">
+            <summary>Writes the specified value to the handler.</summary>
+            <param name="value">The value to write.</param>
+            <param name="format">The format string.</param>
+            <typeparam name="T">The type of the value to write.</typeparam>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.AppendFormatted``1(``0,System.Int32)">
+            <summary>Writes the specified value to the handler.</summary>
+            <param name="value">The value to write.</param>
+            <param name="alignment">Minimum number of characters that should be written for this value.  If the value is negative, it indicates left-aligned and the required minimum is the absolute value.</param>
+            <typeparam name="T">The type of the value to write.</typeparam>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.AppendFormatted``1(``0,System.Int32,System.String)">
+            <summary>Writes the specified value to the handler.</summary>
+            <param name="value">The value to write.</param>
+            <param name="format">The format string.</param>
+            <param name="alignment">Minimum number of characters that should be written for this value.  If the value is negative, it indicates left-aligned and the required minimum is the absolute value.</param>
+            <typeparam name="T">The type of the value to write.</typeparam>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.AppendFormatted(System.ReadOnlySpan{System.Char})">
+            <summary>Writes the specified character span to the handler.</summary>
+            <param name="value">The span to write.</param>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.AppendFormatted(System.ReadOnlySpan{System.Char},System.Int32,System.String)">
+            <summary>Writes the specified string of chars to the handler.</summary>
+            <param name="value">The span to write.</param>
+            <param name="alignment">Minimum number of characters that should be written for this value.  If the value is negative, it indicates left-aligned and the required minimum is the absolute value.</param>
+            <param name="format">The format string.</param>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.AppendFormatted(System.String)">
+            <summary>Writes the specified value to the handler.</summary>
+            <param name="value">The value to write.</param>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.AppendFormattedSlow(System.String)">
+            <summary>Writes the specified value to the handler.</summary>
+            <param name="value">The value to write.</param>
+            <remarks>
+            Slow path to handle a custom formatter, potentially null value,
+            or a string that doesn't fit in the current buffer.
+            </remarks>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.AppendFormatted(System.String,System.Int32,System.String)">
+            <summary>Writes the specified value to the handler.</summary>
+            <param name="value">The value to write.</param>
+            <param name="alignment">Minimum number of characters that should be written for this value.  If the value is negative, it indicates left-aligned and the required minimum is the absolute value.</param>
+            <param name="format">The format string.</param>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.AppendFormatted(System.Object,System.Int32,System.String)">
+            <summary>Writes the specified value to the handler.</summary>
+            <param name="value">The value to write.</param>
+            <param name="alignment">Minimum number of characters that should be written for this value.  If the value is negative, it indicates left-aligned and the required minimum is the absolute value.</param>
+            <param name="format">The format string.</param>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.HasCustomFormatter(System.IFormatProvider)">
+            <summary>Gets whether the provider provides a custom formatter.</summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.AppendCustomFormatter``1(``0,System.String)">
+            <summary>Formats the value using the custom formatter from the provider.</summary>
+            <param name="value">The value to write.</param>
+            <param name="format">The format string.</param>
+            <typeparam name="T">The type of the value to write.</typeparam>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.AppendOrInsertAlignmentIfNeeded(System.Int32,System.Int32)">
+            <summary>Handles adding any padding required for aligning a formatted value in an interpolation expression.</summary>
+            <param name="startingPos">The position at which the written value started.</param>
+            <param name="alignment">Non-zero minimum number of characters that should be written for this value.  If the value is negative, it indicates left-aligned and the required minimum is the absolute value.</param>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.EnsureCapacityForAdditionalChars(System.Int32)">
+            <summary>Ensures <see cref="F:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler._chars"/> has the capacity to store <paramref name="additionalChars"/> beyond <see cref="F:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler._pos"/>.</summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.GrowThenCopyString(System.String)">
+            <summary>Fallback for fast path in <see cref="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.AppendStringDirect(System.String)"/> when there's not enough space in the destination.</summary>
+            <param name="value">The string to write.</param>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.GrowThenCopySpan(System.ReadOnlySpan{System.Char})">
+            <summary>Fallback for <see cref="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.AppendFormatted(System.ReadOnlySpan{System.Char})"/> for when not enough space exists in the current buffer.</summary>
+            <param name="value">The span to write.</param>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.Grow(System.Int32)">
+            <summary>Grows <see cref="F:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler._chars"/> to have the capacity to store at least <paramref name="additionalChars"/> beyond <see cref="F:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler._pos"/>.</summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.Grow">
+            <summary>Grows the size of <see cref="F:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler._chars"/>.</summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.GrowCore(System.UInt32)">
+            <summary>Grow the size of <see cref="F:System.Runtime.CompilerServices.DefaultInterpolatedStringHandler._chars"/> to at least the specified <paramref name="requiredMinCapacity"/>.</summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.DisableRuntimeMarshallingAttribute">
+             <summary>
+             Disables the built-in runtime managed/unmanaged marshalling subsystem for
+             P/Invokes, Delegate types, and unmanaged function pointer invocations.
+             </summary>
+             <remarks>
+             <para>Note: This does nothing on runtimes older than .NET 7. It is provided entirely for forward compatibility.</para>
+             The built-in marshalling subsystem has some behaviors that cannot be changed due to
+             backward-compatibility requirements. This attribute allows disabling the built-in
+             subsystem and instead uses the following rules for P/Invokes, Delegates,
+             and unmanaged function pointer invocations:
+            
+             - All value types that do not contain reference type fields recursively (<c>unmanaged</c> in C#) are blittable
+             - Value types that recursively have any fields that have <c>[StructLayout(LayoutKind.Auto)]</c> are disallowed from interop.
+             - All reference types are disallowed from usage in interop scenarios.
+             - SetLastError support in P/Invokes is disabled.
+             - varargs support is disabled.
+             - LCIDConversionAttribute support is disabled.
+             </remarks>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.InterpolatedStringHandlerAttribute">
+            <summary>Indicates the attributed type is to be used as an interpolated string handler.</summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.InterpolatedStringHandlerAttribute.#ctor">
+            <summary>Initializes the <see cref="T:System.Runtime.CompilerServices.InterpolatedStringHandlerAttribute"/>.</summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute">
+            <summary>Indicates which arguments to a method involving an interpolated string handler should be passed to that handler.</summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute"/> class.</summary>
+            <param name="argument">The name of the argument that should be passed to the handler.</param>
+            <remarks><see langword="null"/> may be used as the name of the receiver in an instance method.</remarks>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String[])">
+            <summary>Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute"/> class.</summary>
+            <param name="arguments">The names of the arguments that should be passed to the handler.</param>
+            <remarks><see langword="null"/> may be used as the name of the receiver in an instance method.</remarks>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.Arguments">
+            <summary>Gets the names of the arguments that should be passed to the handler.</summary>
+            <remarks><see langword="null"/> may be used as the name of the receiver in an instance method.</remarks>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.ITuple">
+            <summary>
+            This interface is required for types that want to be indexed into by dynamic patterns.
+            </summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.ITuple.Length">
+            <summary>
+            The number of positions in this data structure.
+            </summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.ITuple.Item(System.Int32)">
+            <summary>
+            Get the element at position <param name="index"/>.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.ModuleInitializerAttribute">
+             <summary>
+             Used to indicate to the compiler that a method should be called
+             in its containing module's initializer.
+             </summary>
+             <remarks>
+             When one or more valid methods
+             with this attribute are found in a compilation, the compiler will
+             emit a module initializer which calls each of the attributed methods.
+            
+             Certain requirements are imposed on any method targeted with this attribute:
+             - The method must be `static`.
+             - The method must be an ordinary member method, as opposed to a property accessor, constructor, local function, etc.
+             - The method must be parameterless.
+             - The method must return `void`.
+             - The method must not be generic or be contained in a generic type.
+             - The method's effective accessibility must be `internal` or `public`.
+            
+             The specification for module initializers in the .NET runtime can be found here:
+             https://github.com/dotnet/runtime/blob/main/docs/design/specs/Ecma-335-Augments.md#module-initializer
+             </remarks>
+        </member>
+        <member name="T:System.ArrayEx">
+            <summary>
+            Extensions to <see cref="T:System.Array"/> providing consistent access to APIs introduced after the type.
+            </summary>
+        </member>
+        <member name="M:System.Collections.HashHelpers.GetFastModMultiplier(System.UInt32)">
+            <summary>Returns approximate reciprocal of the divisor: ceil(2**64 / divisor).</summary>
+            <remarks>This should only be used on 64-bit.</remarks>
+        </member>
+        <member name="M:System.Collections.HashHelpers.FastMod(System.UInt32,System.UInt32,System.UInt64)">
+            <summary>Performs a mod operation using the multiplier pre-computed with <see cref="M:System.Collections.HashHelpers.GetFastModMultiplier(System.UInt32)"/>.</summary>
+            <remarks>This should only be used on 64-bit.</remarks>
+        </member>
+        <member name="T:System.Gen2GcCallback">
+            <summary>
+            Schedules a callback roughly every gen 2 GC (you may see a Gen 0 an Gen 1 but only once)
+            (We can fix this by capturing the Gen 2 count at startup and testing, but I mostly don't care)
+            </summary>
+        </member>
+        <member name="M:System.Gen2GcCallback.Register(System.Func{System.Boolean})">
+            <summary>
+            Schedule 'callback' to be called in the next GC.  If the callback returns true it is
+            rescheduled for the next Gen 2 GC.  Otherwise the callbacks stop.
+            </summary>
+        </member>
+        <member name="M:System.Gen2GcCallback.Register(System.Func{System.Object,System.Boolean},System.Object)">
+             <summary>
+             Schedule 'callback' to be called in the next GC.  If the callback returns true it is
+             rescheduled for the next Gen 2 GC.  Otherwise the callbacks stop.
+            
+             NOTE: This callback will be kept alive until either the callback function returns false,
+             or the target object dies.
+             </summary>
+        </member>
+        <member name="T:System.MathEx">
+            <summary>
+            Extensions to <see cref="T:System.StringComparer"/> providing consistent access to APIs introduced after the type.
+            </summary>
+        </member>
+        <member name="M:System.MathEx.Clamp(System.Byte,System.Byte,System.Byte)">
+             <summary>Returns <paramref name="value" /> clamped to the inclusive range of <paramref name="min" /> and <paramref name="max" />.</summary>
+             <param name="value">The value to be clamped.</param>
+             <param name="min">The lower bound of the result.</param>
+             <param name="max">The upper bound of the result.</param>
+             <returns>
+               <paramref name="value" /> if <paramref name="min" /> ≤ <paramref name="value" /> ≤ <paramref name="max" />.
+            
+               -or-
+            
+               <paramref name="min" /> if <paramref name="value" /> &lt; <paramref name="min" />.
+            
+               -or-
+            
+               <paramref name="max" /> if <paramref name="max" /> &lt; <paramref name="value" />.
+             </returns>
+        </member>
+        <member name="M:System.MathEx.Clamp(System.Decimal,System.Decimal,System.Decimal)">
+             <summary>Returns <paramref name="value" /> clamped to the inclusive range of <paramref name="min" /> and <paramref name="max" />.</summary>
+             <param name="value">The value to be clamped.</param>
+             <param name="min">The lower bound of the result.</param>
+             <param name="max">The upper bound of the result.</param>
+             <returns>
+               <paramref name="value" /> if <paramref name="min" /> ≤ <paramref name="value" /> ≤ <paramref name="max" />.
+            
+               -or-
+            
+               <paramref name="min" /> if <paramref name="value" /> &lt; <paramref name="min" />.
+            
+               -or-
+            
+               <paramref name="max" /> if <paramref name="max" /> &lt; <paramref name="value" />.
+             </returns>
+        </member>
+        <member name="M:System.MathEx.Clamp(System.Double,System.Double,System.Double)">
+             <summary>Returns <paramref name="value" /> clamped to the inclusive range of <paramref name="min" /> and <paramref name="max" />.</summary>
+             <param name="value">The value to be clamped.</param>
+             <param name="min">The lower bound of the result.</param>
+             <param name="max">The upper bound of the result.</param>
+             <returns>
+               <paramref name="value" /> if <paramref name="min" /> ≤ <paramref name="value" /> ≤ <paramref name="max" />.
+            
+               -or-
+            
+               <paramref name="min" /> if <paramref name="value" /> &lt; <paramref name="min" />.
+            
+               -or-
+            
+               <paramref name="max" /> if <paramref name="max" /> &lt; <paramref name="value" />.
+             </returns>
+        </member>
+        <member name="M:System.MathEx.Clamp(System.Int16,System.Int16,System.Int16)">
+             <summary>Returns <paramref name="value" /> clamped to the inclusive range of <paramref name="min" /> and <paramref name="max" />.</summary>
+             <param name="value">The value to be clamped.</param>
+             <param name="min">The lower bound of the result.</param>
+             <param name="max">The upper bound of the result.</param>
+             <returns>
+               <paramref name="value" /> if <paramref name="min" /> ≤ <paramref name="value" /> ≤ <paramref name="max" />.
+            
+               -or-
+            
+               <paramref name="min" /> if <paramref name="value" /> &lt; <paramref name="min" />.
+            
+               -or-
+            
+               <paramref name="max" /> if <paramref name="max" /> &lt; <paramref name="value" />.
+             </returns>
+        </member>
+        <member name="M:System.MathEx.Clamp(System.Int32,System.Int32,System.Int32)">
+             <summary>Returns <paramref name="value" /> clamped to the inclusive range of <paramref name="min" /> and <paramref name="max" />.</summary>
+             <param name="value">The value to be clamped.</param>
+             <param name="min">The lower bound of the result.</param>
+             <param name="max">The upper bound of the result.</param>
+             <returns>
+               <paramref name="value" /> if <paramref name="min" /> ≤ <paramref name="value" /> ≤ <paramref name="max" />.
+            
+               -or-
+            
+               <paramref name="min" /> if <paramref name="value" /> &lt; <paramref name="min" />.
+            
+               -or-
+            
+               <paramref name="max" /> if <paramref name="max" /> &lt; <paramref name="value" />.
+             </returns>
+        </member>
+        <member name="M:System.MathEx.Clamp(System.Int64,System.Int64,System.Int64)">
+             <summary>Returns <paramref name="value" /> clamped to the inclusive range of <paramref name="min" /> and <paramref name="max" />.</summary>
+             <param name="value">The value to be clamped.</param>
+             <param name="min">The lower bound of the result.</param>
+             <param name="max">The upper bound of the result.</param>
+             <returns>
+               <paramref name="value" /> if <paramref name="min" /> ≤ <paramref name="value" /> ≤ <paramref name="max" />.
+            
+               -or-
+            
+               <paramref name="min" /> if <paramref name="value" /> &lt; <paramref name="min" />.
+            
+               -or-
+            
+               <paramref name="max" /> if <paramref name="max" /> &lt; <paramref name="value" />.
+             </returns>
+        </member>
+        <member name="M:System.MathEx.Clamp(System.IntPtr,System.IntPtr,System.IntPtr)">
+             <summary>Returns <paramref name="value" /> clamped to the inclusive range of <paramref name="min" /> and <paramref name="max" />.</summary>
+             <param name="value">The value to be clamped.</param>
+             <param name="min">The lower bound of the result.</param>
+             <param name="max">The upper bound of the result.</param>
+             <returns>
+               <paramref name="value" /> if <paramref name="min" /> ≤ <paramref name="value" /> ≤ <paramref name="max" />.
+            
+               -or-
+            
+               <paramref name="min" /> if <paramref name="value" /> &lt; <paramref name="min" />.
+            
+               -or-
+            
+               <paramref name="max" /> if <paramref name="max" /> &lt; <paramref name="value" />.
+             </returns>
+        </member>
+        <member name="M:System.MathEx.Clamp(System.SByte,System.SByte,System.SByte)">
+             <summary>Returns <paramref name="value" /> clamped to the inclusive range of <paramref name="min" /> and <paramref name="max" />.</summary>
+             <param name="value">The value to be clamped.</param>
+             <param name="min">The lower bound of the result.</param>
+             <param name="max">The upper bound of the result.</param>
+             <returns>
+               <paramref name="value" /> if <paramref name="min" /> ≤ <paramref name="value" /> ≤ <paramref name="max" />.
+            
+               -or-
+            
+               <paramref name="min" /> if <paramref name="value" /> &lt; <paramref name="min" />.
+            
+               -or-
+            
+               <paramref name="max" /> if <paramref name="max" /> &lt; <paramref name="value" />.
+             </returns>
+        </member>
+        <member name="M:System.MathEx.Clamp(System.Single,System.Single,System.Single)">
+             <summary>Returns <paramref name="value" /> clamped to the inclusive range of <paramref name="min" /> and <paramref name="max" />.</summary>
+             <param name="value">The value to be clamped.</param>
+             <param name="min">The lower bound of the result.</param>
+             <param name="max">The upper bound of the result.</param>
+             <returns>
+               <paramref name="value" /> if <paramref name="min" /> ≤ <paramref name="value" /> ≤ <paramref name="max" />.
+            
+               -or-
+            
+               <paramref name="min" /> if <paramref name="value" /> &lt; <paramref name="min" />.
+            
+               -or-
+            
+               <paramref name="max" /> if <paramref name="max" /> &lt; <paramref name="value" />.
+             </returns>
+        </member>
+        <member name="M:System.MathEx.Clamp(System.UInt16,System.UInt16,System.UInt16)">
+             <summary>Returns <paramref name="value" /> clamped to the inclusive range of <paramref name="min" /> and <paramref name="max" />.</summary>
+             <param name="value">The value to be clamped.</param>
+             <param name="min">The lower bound of the result.</param>
+             <param name="max">The upper bound of the result.</param>
+             <returns>
+               <paramref name="value" /> if <paramref name="min" /> ≤ <paramref name="value" /> ≤ <paramref name="max" />.
+            
+               -or-
+            
+               <paramref name="min" /> if <paramref name="value" /> &lt; <paramref name="min" />.
+            
+               -or-
+            
+               <paramref name="max" /> if <paramref name="max" /> &lt; <paramref name="value" />.
+             </returns>
+        </member>
+        <member name="M:System.MathEx.Clamp(System.UInt32,System.UInt32,System.UInt32)">
+             <summary>Returns <paramref name="value" /> clamped to the inclusive range of <paramref name="min" /> and <paramref name="max" />.</summary>
+             <param name="value">The value to be clamped.</param>
+             <param name="min">The lower bound of the result.</param>
+             <param name="max">The upper bound of the result.</param>
+             <returns>
+               <paramref name="value" /> if <paramref name="min" /> ≤ <paramref name="value" /> ≤ <paramref name="max" />.
+            
+               -or-
+            
+               <paramref name="min" /> if <paramref name="value" /> &lt; <paramref name="min" />.
+            
+               -or-
+            
+               <paramref name="max" /> if <paramref name="max" /> &lt; <paramref name="value" />.
+             </returns>
+        </member>
+        <member name="M:System.MathEx.Clamp(System.UInt64,System.UInt64,System.UInt64)">
+             <summary>Returns <paramref name="value" /> clamped to the inclusive range of <paramref name="min" /> and <paramref name="max" />.</summary>
+             <param name="value">The value to be clamped.</param>
+             <param name="min">The lower bound of the result.</param>
+             <param name="max">The upper bound of the result.</param>
+             <returns>
+               <paramref name="value" /> if <paramref name="min" /> ≤ <paramref name="value" /> ≤ <paramref name="max" />.
+            
+               -or-
+            
+               <paramref name="min" /> if <paramref name="value" /> &lt; <paramref name="min" />.
+            
+               -or-
+            
+               <paramref name="max" /> if <paramref name="max" /> &lt; <paramref name="value" />.
+             </returns>
+        </member>
+        <member name="M:System.MathEx.Clamp(System.UIntPtr,System.UIntPtr,System.UIntPtr)">
+             <summary>Returns <paramref name="value" /> clamped to the inclusive range of <paramref name="min" /> and <paramref name="max" />.</summary>
+             <param name="value">The value to be clamped.</param>
+             <param name="min">The lower bound of the result.</param>
+             <param name="max">The upper bound of the result.</param>
+             <returns>
+               <paramref name="value" /> if <paramref name="min" /> ≤ <paramref name="value" /> ≤ <paramref name="max" />.
+            
+               -or-
+            
+               <paramref name="min" /> if <paramref name="value" /> &lt; <paramref name="min" />.
+            
+               -or-
+            
+               <paramref name="max" /> if <paramref name="max" /> &lt; <paramref name="value" />.
+             </returns>
+        </member>
+        <member name="T:System.Numerics.BitOperationsEx">
+            <summary>
+            Extensions to <see cref="T:System.StringComparer"/> providing consistent access to APIs introduced after the type.
+            </summary>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.IsPow2(System.Int32)">
+            <summary>
+            Evaluate whether a given integral value is a power of 2.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.IsPow2(System.UInt32)">
+            <summary>
+            Evaluate whether a given integral value is a power of 2.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.IsPow2(System.Int64)">
+            <summary>
+            Evaluate whether a given integral value is a power of 2.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.IsPow2(System.UInt64)">
+            <summary>
+            Evaluate whether a given integral value is a power of 2.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.IsPow2(System.IntPtr)">
+            <summary>
+            Evaluate whether a given integral value is a power of 2.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.IsPow2(System.UIntPtr)">
+            <summary>
+            Evaluate whether a given integral value is a power of 2.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.RoundUpToPowerOf2(System.UInt32)">
+            <summary>Round the given integral value up to a power of 2.</summary>
+            <param name="value">The value.</param>
+            <returns>
+            The smallest power of 2 which is greater than or equal to <paramref name="value"/>.
+            If <paramref name="value"/> is 0 or the result overflows, returns 0.
+            </returns>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.RoundUpToPowerOf2(System.UInt64)">
+            <summary>
+            Round the given integral value up to a power of 2.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>
+            The smallest power of 2 which is greater than or equal to <paramref name="value"/>.
+            If <paramref name="value"/> is 0 or the result overflows, returns 0.
+            </returns>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.RoundUpToPowerOf2(System.UIntPtr)">
+            <summary>
+            Round the given integral value up to a power of 2.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>
+            The smallest power of 2 which is greater than or equal to <paramref name="value"/>.
+            If <paramref name="value"/> is 0 or the result overflows, returns 0.
+            </returns>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.LeadingZeroCount(System.UInt32)">
+            <summary>
+            Count the number of leading zero bits in a mask.
+            Similar in behavior to the x86 instruction LZCNT.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.LeadingZeroCount(System.UInt64)">
+            <summary>
+            Count the number of leading zero bits in a mask.
+            Similar in behavior to the x86 instruction LZCNT.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.LeadingZeroCount(System.UIntPtr)">
+            <summary>
+            Count the number of leading zero bits in a mask.
+            Similar in behavior to the x86 instruction LZCNT.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.Log2(System.UInt32)">
+            <summary>
+            Returns the integer (floor) log of the specified value, base 2.
+            Note that by convention, input value 0 returns 0 since log(0) is undefined.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.Log2(System.UInt64)">
+            <summary>
+            Returns the integer (floor) log of the specified value, base 2.
+            Note that by convention, input value 0 returns 0 since log(0) is undefined.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.Log2(System.UIntPtr)">
+            <summary>
+            Returns the integer (floor) log of the specified value, base 2.
+            Note that by convention, input value 0 returns 0 since log(0) is undefined.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.PopCount(System.UInt32)">
+            <summary>
+            Returns the population count (number of bits set) of a mask.
+            Similar in behavior to the x86 instruction POPCNT.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.PopCount(System.UInt64)">
+            <summary>
+            Returns the population count (number of bits set) of a mask.
+            Similar in behavior to the x86 instruction POPCNT.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.PopCount(System.UIntPtr)">
+            <summary>
+            Returns the population count (number of bits set) of a mask.
+            Similar in behavior to the x86 instruction POPCNT.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.TrailingZeroCount(System.Int32)">
+            <summary>
+            Count the number of trailing zero bits in an integer value.
+            Similar in behavior to the x86 instruction TZCNT.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.TrailingZeroCount(System.UInt32)">
+            <summary>
+            Count the number of trailing zero bits in an integer value.
+            Similar in behavior to the x86 instruction TZCNT.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.TrailingZeroCount(System.Int64)">
+            <summary>
+            Count the number of trailing zero bits in a mask.
+            Similar in behavior to the x86 instruction TZCNT.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.TrailingZeroCount(System.UInt64)">
+            <summary>
+            Count the number of trailing zero bits in a mask.
+            Similar in behavior to the x86 instruction TZCNT.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.TrailingZeroCount(System.IntPtr)">
+            <summary>
+            Count the number of trailing zero bits in a mask.
+            Similar in behavior to the x86 instruction TZCNT.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.TrailingZeroCount(System.UIntPtr)">
+            <summary>
+            Count the number of trailing zero bits in a mask.
+            Similar in behavior to the x86 instruction TZCNT.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.RotateLeft(System.UInt32,System.Int32)">
+            <summary>
+            Rotates the specified value left by the specified number of bits.
+            Similar in behavior to the x86 instruction ROL.
+            </summary>
+            <param name="value">The value to rotate.</param>
+            <param name="offset">The number of bits to rotate by.
+            Any value outside the range [0..31] is treated as congruent mod 32.</param>
+            <returns>The rotated value.</returns>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.RotateLeft(System.UInt64,System.Int32)">
+            <summary>
+            Rotates the specified value left by the specified number of bits.
+            Similar in behavior to the x86 instruction ROL.
+            </summary>
+            <param name="value">The value to rotate.</param>
+            <param name="offset">The number of bits to rotate by.
+            Any value outside the range [0..63] is treated as congruent mod 64.</param>
+            <returns>The rotated value.</returns>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.RotateLeft(System.UIntPtr,System.Int32)">
+            <summary>
+            Rotates the specified value left by the specified number of bits.
+            Similar in behavior to the x86 instruction ROL.
+            </summary>
+            <param name="value">The value to rotate.</param>
+            <param name="offset">The number of bits to rotate by.
+            Any value outside the range [0..31] is treated as congruent mod 32 on a 32-bit process,
+            and any value outside the range [0..63] is treated as congruent mod 64 on a 64-bit process.</param>
+            <returns>The rotated value.</returns>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.RotateRight(System.UInt32,System.Int32)">
+            <summary>
+            Rotates the specified value right by the specified number of bits.
+            Similar in behavior to the x86 instruction ROR.
+            </summary>
+            <param name="value">The value to rotate.</param>
+            <param name="offset">The number of bits to rotate by.
+            Any value outside the range [0..31] is treated as congruent mod 32.</param>
+            <returns>The rotated value.</returns>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.RotateRight(System.UInt64,System.Int32)">
+            <summary>
+            Rotates the specified value right by the specified number of bits.
+            Similar in behavior to the x86 instruction ROR.
+            </summary>
+            <param name="value">The value to rotate.</param>
+            <param name="offset">The number of bits to rotate by.
+            Any value outside the range [0..63] is treated as congruent mod 64.</param>
+            <returns>The rotated value.</returns>
+        </member>
+        <member name="M:System.Numerics.BitOperationsEx.RotateRight(System.UIntPtr,System.Int32)">
+            <summary>
+            Rotates the specified value right by the specified number of bits.
+            Similar in behavior to the x86 instruction ROR.
+            </summary>
+            <param name="value">The value to rotate.</param>
+            <param name="offset">The number of bits to rotate by.
+            Any value outside the range [0..31] is treated as congruent mod 32 on a 32-bit process,
+            and any value outside the range [0..63] is treated as congruent mod 64 on a 64-bit process.</param>
+            <returns>The rotated value.</returns>
+        </member>
+        <member name="T:System.StringComparerEx">
+            <summary>
+            Extensions to <see cref="T:System.StringComparer"/> providing consistent access to APIs introduced after the type.
+            </summary>
+        </member>
+        <member name="T:System.Threading.MonitorEx">
+            <summary>
+            Extensions to <see cref="T:System.Threading.Monitor"/> providing consistent access to APIs introduced after the type.
+            </summary>
+        </member>
+    </members>
+</doc>
