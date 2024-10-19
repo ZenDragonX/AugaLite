@@ -402,7 +402,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="Copy" AfterTargets="ILRepack">
-    <Exec Condition=" '$(Configuration)|$(Platform)' != 'API|AnyCPU' " Command="xcopy &quot;$(TargetDir)$(TargetFileName)&quot; &quot;C:\Users\joel\Projects\ValheimDev\Valheim\BepInEx\plugins\$(ProjectName)\&quot; /q /y /i" />
+    <Exec Condition=" '$(Configuration)|$(Platform)' != 'API|AnyCPU' " Command="xcopy &quot;$(TargetDir)$(TargetFileName)&quot; &quot;C:\Projects\ValheimDev\BepInEx\plugins\$(ProjectName)\&quot; /q /y /i" />
 <!--    <Exec Condition=" '$(Configuration)|$(Platform)' == 'API|AnyCPU' " Command="xcopy &quot;$(TargetDir)$(TargetFileName)&quot; &quot;M:\Code\VapokModBase\References\AugaAPI\&quot; /q /y /i" /> -->
   </Target>
   <PropertyGroup>
