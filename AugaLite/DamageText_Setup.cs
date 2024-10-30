@@ -18,7 +18,7 @@ namespace AugaLite
 
         [HarmonyPatch(typeof(DamageText), nameof(DamageText.AddInworldText))]
         [HarmonyPostfix]
-        public static void AddInworldText_Postfix(DamageText __instance, DamageText.TextType type, float dmg, bool mySelf)
+        public static void AddInworldText_Postfix(DamageText __instance, DamageText.TextType type, string text, bool mySelf)
         {
             var worldTextInstance = __instance.m_worldTexts.LastOrDefault();
             if (worldTextInstance == null)
@@ -33,7 +33,7 @@ namespace AugaLite
             }
             else if (mySelf)
             {
-                color = dmg != 0.0f ? AugaLite.Colors.PlayerDamage : AugaLite.Colors.PlayerNoDamage;
+                color = text != "0" ? AugaLite.Colors.PlayerDamage : AugaLite.Colors.PlayerNoDamage;
             }
             else
             {

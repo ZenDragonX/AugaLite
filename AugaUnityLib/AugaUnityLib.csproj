@@ -104,10 +104,8 @@
     <Compile Include="AddItemIconMaterial.cs" />
     <Compile Include="AlwaysUpper.cs" />
     <Compile Include="AugaBarberController.cs" />
-    <Compile Include="AugaBindingDisplay.cs" />
     <Compile Include="AugaCharacterSelect.cs" />
     <Compile Include="AugaCompendiumController.cs" />
-    <Compile Include="AugaCraftingPanel.cs" />
     <Compile Include="AugaGuardianPowerHUD.cs" />
     <Compile Include="AugaHealthBar.cs" />
     <Compile Include="AugaMessageLog.cs" />
@@ -127,7 +125,6 @@
     <Compile Include="ColoredItemBar.cs" />
     <Compile Include="ComplexTooltip.cs" />
     <Compile Include="CooldownController.cs" />
-    <Compile Include="CraftingRequirementsPanel.cs" />
     <Compile Include="CraftingTabButton.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="GuiInputFieldSubmit.cs" />
@@ -161,7 +158,6 @@
     <Compile Include="UIGradient\UIGradient.cs" />
     <Compile Include="UIGradient\Vector2Extension.cs" />
     <Compile Include="UpgradeRequirementsWireFrame.cs" />
-    <Compile Include="WorkbenchPanelController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
