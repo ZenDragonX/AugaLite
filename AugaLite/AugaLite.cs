@@ -73,7 +73,7 @@ namespace AugaLite
         public Color TooHard = new Color(0.8f, 0.7f, 0.7f, 1f);
     }
 
-    [BepInPlugin(PluginID, "AugaLite", Version)]
+    [BepInPlugin(PluginID, PluginName, Version)]
 //[BepInDependency("Menthus.bepinex.plugins.BetterTrader", BepInDependency.DependencyFlags.SoftDependency)]
 //[BepInDependency("maximods.valheim.multicraft", BepInDependency.DependencyFlags.SoftDependency)]
 //[BepInDependency("redseiko.valheim.chatter", BepInDependency.DependencyFlags.SoftDependency)]
@@ -83,7 +83,8 @@ namespace AugaLite
     public class AugaLite : BaseUnityPlugin
     {
         public const string PluginID = "ZenDragon.AugaLite";
-        public const string Version = "1.3.12";
+        public const string PluginName = "AugaLite";
+        public const string Version = "1.0.0"; // forked from Auga 1.3.12
 
         public enum StatBarTextDisplayMode { JustValue, ValueAndMax, ValueMaxPercent, JustPercent }
         public enum StatBarTextPosition { Off = -1, Above, Below, Center, Start, End };

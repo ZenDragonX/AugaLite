@@ -389,6 +389,8 @@
 xcopy "$(TargetPath)" "$(SolutionDir)ThunderstorePackage\plugins" /q /y /i
 xcopy "$(ProjectDir)translations.json" "$(SolutionDir)ThunderstorePackage\plugins" /q /y /i
 xcopy "$(ProjectDir)README.md" "$(SolutionDir)ThunderstorePackage" /q /y /i
+
+powershell $(SolutionDir)CreateThunderstoreZip.ps1
     </PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets" Condition="Exists('..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets')" />
