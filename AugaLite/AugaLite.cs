@@ -84,7 +84,7 @@ namespace AugaLite
     {
         public const string PluginID = "ZenDragon.AugaLite";
         public const string PluginName = "AugaLite";
-        public const string Version = "1.0.0"; // forked from Auga 1.3.11
+        public const string Version = "1.0.1"; // forked from Auga 1.3.11
 
         public enum StatBarTextDisplayMode { JustValue, ValueAndMax, ValueMaxPercent, JustPercent }
         public enum StatBarTextPosition { Off = -1, Above, Below, Center, Start, End };
@@ -163,8 +163,6 @@ namespace AugaLite
                     }
                 }
             }
-
-            SceneManager.sceneLoaded += OnSceneLoaded;
             
             LoadDependencies();
             //APIManager.Patcher.Patch();
@@ -183,22 +181,6 @@ namespace AugaLite
 
             _harmony = Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly(), PluginID);
 
-        }
-
-
-        private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-        {
-            
-            // disable lens dirt
-            var camera = GameCamera.instance;
-            if (!camera)
-                return;
-
-            var post = camera.gameObject.GetComponent<PostProcessingBehaviour>();
-            if (!post)
-                return;
-
-            post.profile.bloom.m_Settings.lensDirt.intensity = 0;
         }
         
 /*
