@@ -378,16 +378,12 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="Copy" AfterTargets="ILRepack">
     <Exec Condition=" '$(Configuration)|$(Platform)' != 'API|AnyCPU' " Command="xcopy &quot;$(TargetDir)$(TargetFileName)&quot; &quot;C:\Projects\ValheimDev\BepInEx\plugins\$(ProjectName)\&quot; /q /y /i" />
-<!--    <Exec Condition=" '$(Configuration)|$(Platform)' == 'API|AnyCPU' " Command="xcopy &quot;$(TargetDir)$(TargetFileName)&quot; &quot;M:\Code\VapokModBase\References\AugaAPI\&quot; /q /y /i" /> -->
+    <Exec Condition=" '$(Configuration)|$(Platform)' != 'API|AnyCPU' " Command="powershell &quot;$(SolutionDir)CreateThunderstoreZip.ps1&quot;" />
+
+    <!--    <Exec Condition=" '$(Configuration)|$(Platform)' == 'API|AnyCPU' " Command="xcopy &quot;$(TargetDir)$(TargetFileName)&quot; &quot;M:\Code\VapokModBase\References\AugaAPI\&quot; /q /y /i" /> -->
   </Target>
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(ProjectDir)translations.json" "C:\Projects\ValheimDev\BepInEx\plugins\$(ProjectName)\" /q /y /i
-
-xcopy "$(TargetPath)" "$(SolutionDir)ThunderstorePackage\plugins" /q /y /i
-xcopy "$(ProjectDir)translations.json" "$(SolutionDir)ThunderstorePackage\plugins" /q /y /i
-xcopy "$(ProjectDir)README.md" "$(SolutionDir)ThunderstorePackage" /q /y /i
-
-powershell $(SolutionDir)CreateThunderstoreZip.ps1
     </PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets" Condition="Exists('..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets')" />
