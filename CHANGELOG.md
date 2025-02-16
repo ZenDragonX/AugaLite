@@ -1,3 +1,5 @@
+This file is no longer maintained. - Zen Dragon
+
 ### 1.3.11 - Tooltip Improvements
 * Added a Default Complex Tooltip to ensure a tooltip is always available.
 

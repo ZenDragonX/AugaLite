@@ -344,7 +344,6 @@
     <Compile Include="Utilities\TranspilerHelpers.cs" />
   </ItemGroup>
   <ItemGroup Condition=" '$(Configuration)|$(Platform)' != 'API|AnyCPU' ">
-    <None Include="manifest.json" />
     <None Include="packages.config" />
     <None Include="README.md" />
     <None Include="translations.json" />
@@ -385,8 +384,11 @@
 <!--    <Exec Condition=" '$(Configuration)|$(Platform)' == 'API|AnyCPU' " Command="xcopy &quot;$(TargetDir)$(TargetFileName)&quot; &quot;M:\Code\VapokModBase\References\AugaAPI\&quot; /q /y /i" /> -->
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>
-        xcopy "$(ProjectDir)translations.json" "C:\Projects\ValheimDev\BepInEx\plugins\$(ProjectName)\" /q /y /i
+    <PostBuildEvent>xcopy "$(ProjectDir)translations.json" "C:\Projects\ValheimDev\BepInEx\plugins\$(ProjectName)\" /q /y /i
+
+xcopy "$(TargetPath)" "$(SolutionDir)ThunderstorePackage\plugins" /q /y /i
+xcopy "$(ProjectDir)translations.json" "$(SolutionDir)ThunderstorePackage\plugins" /q /y /i
+xcopy "$(ProjectDir)README.md" "$(SolutionDir)ThunderstorePackage" /q /y /i
     </PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets" Condition="Exists('..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets')" />

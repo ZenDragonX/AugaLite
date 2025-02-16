@@ -1,0 +1,9 @@
+{
+  "name": "AugaLite",
+  "description": "Super small subset of Auga with 95% of the functionality removed. Read the description!",
+  "version_number": "1.0.0",
+  "website_url": "https://github.com/ZenDragonX/AugaLite",
+  "dependencies": [
+    "denikson-BepInExPack_Valheim-5.4.2202"
+  ]
+}
