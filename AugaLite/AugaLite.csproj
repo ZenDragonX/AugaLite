@@ -371,9 +371,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ILRepack.targets" />
-    <Content Include="..\CHANGELOG.md">
-      <Link>CHANGELOG.md</Link>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

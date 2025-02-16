@@ -84,7 +84,7 @@ namespace AugaLite
     {
         public const string PluginID = "ZenDragon.AugaLite";
         public const string PluginName = "AugaLite";
-        public const string Version = "1.0.0"; // forked from Auga 1.3.12
+        public const string Version = "1.0.0"; // forked from Auga 1.3.11
 
         public enum StatBarTextDisplayMode { JustValue, ValueAndMax, ValueMaxPercent, JustPercent }
         public enum StatBarTextPosition { Off = -1, Above, Below, Center, Start, End };
