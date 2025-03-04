@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AugaLite
 {
-    [HarmonyPatch]
+    //[HarmonyPatch]  <--- DISABLED until can fix for valheim v0.220.3
     public static class MessageHud_Setup
     {
         [HarmonyPatch(typeof(MessageHud), nameof(MessageHud.Awake))]
