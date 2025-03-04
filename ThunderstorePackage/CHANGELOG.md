@@ -1,4 +1,6 @@
 ### AugaLite Changelog
+v1.0.3
+- fix, missed a spot - nullref error.
 
 v1.0.2
 - UPDATED FOR VALHEIM v0.220.3
