@@ -309,15 +309,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainMenu_Setup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup Condition=" '$(Configuration)|$(Platform)' != 'API|AnyCPU' ">
     <Compile Include="AugaLite.cs" />
     <Compile Include="MovableHudElement.cs" />
-    <Compile Include="Chat_Setup.cs" />
-    <Compile Include="Connection_Setup.cs" />
-    <Compile Include="DamageText_Setup.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="GuiBar_Patch.cs" />
     <Compile Include="Hud_Setup.cs" />
@@ -329,12 +325,10 @@
     <Compile Include="SetupHelper.cs" />
     <Compile Include="Store_Setup.cs" />
     <Compile Include="TextInput_Setup.cs" />
-    <Compile Include="EnemeyHud_Setup.cs" />
     <Compile Include="TextViewer_Setup.cs" />
     <Compile Include="Text_Patch.cs" />
     <Compile Include="UITooltip_Patch.cs" />
     <Compile Include="Minimap_Setup.cs" />
-    <Compile Include="Barber_Setup.cs" />
     <Compile Include="Compat\Chatter.cs" />
     <Compile Include="Compat\Jewelcrafting.cs" />
     <Compile Include="Compat\SearsCatalog.cs" />

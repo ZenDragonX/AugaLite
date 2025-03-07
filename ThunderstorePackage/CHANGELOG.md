@@ -1,4 +1,6 @@
-### AugaLite Changelog
+v1.0.4
+- fix, damage numbers were missing after the last update.
+
 v1.0.3
 - fix, missed a spot - nullref error.
 
